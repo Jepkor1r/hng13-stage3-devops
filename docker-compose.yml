@@ -1,0 +1,40 @@
+version: "3.8"
+
+services:
+  blue:
+    image: ${BLUE_IMAGE}
+    container_name: app_blue
+    environment:
+      - RELEASE_ID=${RELEASE_ID_BLUE}
+      - APP_POOL=blue
+      - APP_PORT=${APP_PORT}
+    ports:
+      - "${BLUE_PORT}:${APP_PORT}"
+    restart: unless-stopped
+
+  green:
+    image: ${GREEN_IMAGE}
+    container_name: app_green
+    environment:
+      - RELEASE_ID=${RELEASE_ID_GREEN}
+      - APP_POOL=green
+      - APP_PORT=${APP_PORT}
+    ports:
+      - "${GREEN_PORT}:${APP_PORT}"
+    restart: unless-stopped
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx_gateway
+    depends_on:
+      - blue
+      - green
+    ports:
+      - "${NGINX_PORT}:80"
+    volumes:
+      - ./nginx.conf.template:/etc/nginx/templates/nginx.conf.template:ro
+    environment:
+      - ACTIVE_POOL=${ACTIVE_POOL}
+      - APP_PORT=${APP_PORT}
+    command: /bin/bash -c "envsubst '$$ACTIVE_POOL $$APP_PORT' < /etc/nginx/templates/nginx.conf.template > /etc/nginx/nginx.conf && nginx -g 'daemon off;'"
+
