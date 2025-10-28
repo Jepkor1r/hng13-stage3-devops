@@ -44,16 +44,21 @@ hng13-stage2-devops/
 ## 🐳 How It Works (Simple Story Version)
 
 Imagine two identical kitchens:
+
 Blue Kitchen (app_blue) → The current live app
+
 Green Kitchen (app_green) → The standby version
 
 Nginx is the restaurant front desk that takes orders from customers and decides which kitchen to send them to.
+
 Normally, Nginx sends everything to Blue.
+
 If Blue’s oven breaks (we simulate that using a chaos endpoint), Nginx quickly switches to Green, keeping everything running smoothly.
 
 ### 🧱 Step 1: Build the Docker Image
 
 The Dockerfile defines how to build the web app container. 
+
 It:
 - Uses Node.js as a base image.
 - Copies the app source code.
@@ -107,11 +112,11 @@ curl http://localhost:8080/version   # Through Nginx proxy
 You’ll see headers like:
 
 ```bash
-X-App-Pool: blue`
+X-App-Pool: blue
 
 or
 
-`X-App-Pool: green`
+X-App-Pool: green
 ```
 
 ### 💥 Step 4: Simulate a Failure
@@ -123,6 +128,7 @@ curl -X POST "http://localhost:8081/chaos/start?mode=error"
 ```
 
 Now, the Blue app will start returning 500 errors.
+
 Nginx detects this and automatically reroutes traffic to the Green app — no downtime!
 
 You can confirm by running:
@@ -168,8 +174,11 @@ PASS: Failover successful. 100% of requests served by Green with 0 non-200s.
 ## 🔁 Summary of Traffic Flow
 
 Situation	     Nginx Routes Traffic To	      Why
+
 Normal	         Blue (8081)	                  Blue is healthy
+
 Blue Fails	     Green (8082)	                  Nginx detects Blue’s errors
+
 Blue Fixed	     Blue (8081)	                  You can switch back manually
 
 ## 🧰 Commands Reference
@@ -191,4 +200,5 @@ Blue Fixed	     Blue (8081)	                  You can switch back manually
 
 ## 💡 Key Takeaways
 Both Blue and Green apps run from the same code, but on different ports.
+
 Nginx intelligently decides which one should receive
