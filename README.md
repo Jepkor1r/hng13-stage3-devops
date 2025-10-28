@@ -22,38 +22,39 @@
 
 ## 🏗️ Project Structure
 
+```bash
 hng13-stage2-devops/
 │
 ├── nginx/                     # Nginx as reverse proxy and load balancer
 │   ├── docker-entrypoint.sh
 │   └── nginx.conf.base
-│ 
-├── nginx.conf.template        # Nginx configuration for Blue–Green routing
+│
+├── nginx.conf.template         # Nginx configuration for Blue–Green routing
 │
 ├── ci/
-│   └── test_failover.sh       # Automated failover test script
+│   └── test_failover.sh        # Automated failover test script
 │
-├── .env                       # Environment variables
+├── .env                        # Environment variables
 │
-├── docker-compose.yml         # Defines and connects all services
+├── docker-compose.yml          # Defines and connects all services
 │
-└── README.md                  # Project documentation
-
+└── README.md                   # Project documentation
+```
 ----
 
 ## 🐳 How It Works (Simple Story Version)
 
-Imagine two identical kitchens:
+✨Imagine two identical kitchens:
 
-Blue Kitchen (app_blue) → The current live app
+- Blue Kitchen (app_blue) → The current live app
 
-Green Kitchen (app_green) → The standby version
+- Green Kitchen (app_green) → The standby version
 
-Nginx is the restaurant front desk that takes orders from customers and decides which kitchen to send them to.
+✨Nginx is the restaurant front desk that takes orders from customers and decides which kitchen to send them to.
 
-Normally, Nginx sends everything to Blue.
+✨Normally, Nginx sends everything to Blue.
 
-If Blue’s oven breaks (we simulate that using a chaos endpoint), Nginx quickly switches to Green, keeping everything running smoothly.
+✨If Blue’s oven breaks (we simulate that using a chaos endpoint), Nginx quickly switches to Green, keeping everything running smoothly.
 
 ### 🧱 Step 1: Build the Docker Image
 
@@ -172,14 +173,11 @@ Run the test:
 PASS: Failover successful. 100% of requests served by Green with 0 non-200s.
 
 ## 🔁 Summary of Traffic Flow
-
-Situation	     Nginx Routes Traffic To	      Why
-
-Normal	         Blue (8081)	                  Blue is healthy
-
-Blue Fails	     Green (8082)	                  Nginx detects Blue’s errors
-
-Blue Fixed	     Blue (8081)	                  You can switch back manually
+| Situation | Nginx Routes Traffic To | Why |
+|------------|--------------------------|-----|
+| **Normal** | Blue (8081) | Blue is healthy |
+| **Blue Fails** | Green (8082) | Nginx detects Blue’s errors |
+| **Blue Fixed** | Blue (8081) | You can switch back manually |
 
 ## 🧰 Commands Reference
 - Start all containers ---> docker-compose up -d
