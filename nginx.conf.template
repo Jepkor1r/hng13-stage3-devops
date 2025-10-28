@@ -10,9 +10,10 @@ http {
         # ACTIVE_POOL is either 'blue' or 'green' (the grader sets this)
 
         # blue primary, green backup
-        server blue:${APP_PORT} max_fails=1 fail_timeout=1s;
-        server green:${APP_PORT} backup;
+        server app_blue:${APP_PORT} max_fails=1 fail_timeout=1s;
+        server app_green:${APP_PORT} backup;
     }
+    
 
     # If ACTIVE_POOL=green, the grader will set ACTIVE_POOL=green AND swap DNS/resolve order by reloading
     # But since docker service names are static we control the active pool by adjusting order prior to starting nginx.
@@ -28,11 +29,7 @@ http {
         proxy_send_timeout 1s;
         proxy_read_timeout 1s;
 
-        # Retry rules: failover on errors, timeouts, 5xx
-        proxy_next_upstream error timeout http_500 http_502 http_503 http_504 http_429;
-        proxy_next_upstream_tries 2;
-        proxy_next_upstream_timeout 3s;
-
+        
         location / {
             proxy_pass http://app_upstream;
             proxy_http_version 1.1;
@@ -46,6 +43,12 @@ http {
             proxy_pass_header X-Release-Id;
 
             proxy_buffering off;
+
+            # Retry rules: failover on errors, timeouts, 5xx
+            proxy_next_upstream error timeout http_500 http_502 http_503 http_504 http_429;
+            proxy_next_upstream_tries 2;
+            proxy_next_upstream_timeout 3s;
+
         }
 
         location ~ ^/(version|healthz|chaos) {
@@ -60,6 +63,10 @@ http {
             proxy_pass_header X-Release-Id;
 
             proxy_buffering off;
+
+            proxy_next_upstream error timeout http_500 http_502 http_503 http_504 http_429;
+            proxy_next_upstream_tries 2;
+            proxy_next_upstream_timeout 3s;
         }
     }
 }
