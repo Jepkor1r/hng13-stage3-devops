@@ -1,10 +1,28 @@
 # conf.template - concrete, envsubst-friendly
+
 error_log /var/log/nginx/error.log info;
 
 events {}
 
 http {
 
+    log_format stage3_json escape=json '{'
+        '"time":"$time_iso8601",'
+        '"remote_addr":"$remote_addr",'
+        '"method":"$request_method",'
+        '"uri":"$request_uri",'
+        '"status":"$status",'
+        '"pool":"$http_x_app_pool",'
+        '"release":"$http_x_release_id",'
+        '"upstream_status":"$upstream_status",'
+        '"upstream_addr":"$upstream_addr",'
+        '"request_time":"$request_time",'
+        '"upstream_response_time":"$upstream_response_time"'
+    '}';
+
+    access_log /var/log/nginx/access.log stage3_json;
+
+    
     upstream app_upstream {
         # Primary server listed first; backup server uses "backup" flag.
         # ACTIVE_POOL is either 'blue' or 'green' (the grader sets this)

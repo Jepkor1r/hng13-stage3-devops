@@ -1,202 +1,174 @@
-# 🌐 Blue–Green Deployment with Nginx and Docker
+# 🧭 Blue/Green Deployment with Auto Failover & Slack Alerts
 
-## 🧩 Overview
+This project implements **automated Blue/Green deployment monitoring** using Nginx access logs and a Python watcher that detects:
 
-- This project demonstrates a **Blue-Green Deployment** strategy using **Docker**, **Nginx**, and a simple **Node.js** web application.
+- 🔄 **Failover events** (Blue → Green or Green → Blue)
+- ⚠️ **High error rates** (e.g., >2% 5xx over the last 200 requests)
+- 🚨 Sends alerts to **Slack** using an incoming webhook.
 
-- The goal is to achieve **zero downtime deployment** — where a new version of an app (Green) can take over seamlessly if the current one (Blue) fails or is being updated.
+---
 
-- It works by running two identical environments — one active (Blue) and one idle (Green).
+## ⚙️ Setup Instructions
 
-----
-
-## 🧠 What You’ll Learn:
-- How to containerize apps using **Docker**
-- How to manage multiple environments (Blue & Green)
-- How **Nginx** works as a reverse proxy and load balancer
-- How to perform **failover testing**
-- How to simulate app failure using a **chaos endpoint**
-- The real-world idea behind **zero downtime deployment**
-
-----
-
-## 🏗️ Project Structure
+### 1. Clone Repository
 
 ```bash
-hng13-stage2-devops/
-│
-├── nginx/                     # Nginx as reverse proxy and load balancer
-│   ├── docker-entrypoint.sh
-│   └── nginx.conf.base
-│
-├── nginx.conf.template         # Nginx configuration for Blue–Green routing
-│
-├── ci/
-│   └── test_failover.sh        # Automated failover test script
-│
-├── .env                        # Environment variables
-│
-├── docker-compose.yml          # Defines and connects all services
-│
-└── README.md                   # Project documentation
+git clone https://github.com/<your-repo>.git
+cd <your-repo>
 ```
-----
+### 2. Environment Configuration
 
-## 🐳 How It Works (Simple Story Version)
-
-✨Imagine two identical kitchens:
-
-- Blue Kitchen (app_blue) → The current live app
-
-- Green Kitchen (app_green) → The standby version
-
-✨Nginx is the restaurant front desk that takes orders from customers and decides which kitchen to send them to.
-
-✨Normally, Nginx sends everything to Blue.
-
-✨If Blue’s oven breaks (we simulate that using a chaos endpoint), Nginx quickly switches to Green, keeping everything running smoothly.
-
-### 🧱 Step 1: Build the Docker Image
-
-The Dockerfile defines how to build the web app container. 
-
-It:
-- Uses Node.js as a base image.
-- Copies the app source code.
-- Installs dependencies.
-- Runs the app on port 8080.
-
-To build:
-
-```bash 
-docker build -t myapp:latest .
-```
-
-### 🚀 Step 2: Run All Services with Docker Compose
-
-docker-compose.yml sets up three containers:
-
-- app_blue → Runs on port 8081
-- app_green → Runs on port 8082
-- nginx → Serves as a reverse proxy on port 8080
-
-Start everything:
+Create a .env file in the project root (example already provided):
 
 ```bash
-docker-compose up -d
+cp .env.example .env
 ```
 
-Check running containers:
+Update the following values in .env:
+
+- SLACK_WEBHOOK_URL → your actual Slack Incoming Webhook URL
+
+Adjust thresholds if needed:
 
 ```bash
-docker ps
+ERROR_RATE_THRESHOLD=2
+WINDOW_SIZE=200
+ALERT_COOLDOWN_SEC=300
 ```
 
-You should see:
+### 3. Start the Full Stack
+Bring up Nginx, the Blue/Green Node.js services, and the alert watcher:
+
+``` bash
+docker compose up -d
+```
+
+To view live logs:
 
 ```bash
-app_blue
-app_green
-nginx
+docker compose logs -f
 ```
 
-### 🌍 Step 3: Test the Running Apps
+## 🔬 Chaos Testing (Simulate Failovers)
 
-Try visiting or curling the following URLs:
+You can test the watcher’s alerting system by intentionally causing traffic failures.
+
+### Trigger Failover
+Access the Blue service and simulate it failing (e.g., stop the container):
 
 ```bash
-curl http://localhost:8081/version   # Blue app directly
-curl http://localhost:8082/version   # Green app directly
-curl http://localhost:8080/version   # Through Nginx proxy
+docker stop <blue_container_name>
 ```
 
-You’ll see headers like:
+Nginx will route traffic to Green.
+
+The watcher will detect this pool change and send:
+
+“Failover detected! Traffic switched from BLUE → GREEN”
+
+### Trigger High Error Rate
+
+Run a quick loop of failing requests:
 
 ```bash
-X-App-Pool: blue
-
-or
-
-X-App-Pool: green
+for i in {1..100}; do curl -s -o /dev/null -w "%{http_code}\n" http://localhost:8080/error || true; done
 ```
 
-### 💥 Step 4: Simulate a Failure
+Once error percentage exceeds threshold, you’ll see:
 
-We can intentionally “break” the Blue app using the chaos endpoint:
+“High upstream error rate detected: 5.50% over last 200 requests”
+
+## 🧠 How to View Logs & Verify Slack Alerts
+1. Watcher Container Logs
 
 ```bash
-curl -X POST "http://localhost:8081/chaos/start?mode=error"
+docker compose logs -f alert_watcher
 ```
 
-Now, the Blue app will start returning 500 errors.
-
-Nginx detects this and automatically reroutes traffic to the Green app — no downtime!
-
-You can confirm by running:
+You should see messages like:
 
 ```bash
-curl -i http://localhost:8080/version | grep X-App-Pool
+[ALERT] Failover detected! Traffic switched from BLUE → GREEN
+[INFO] Alert suppressed (cooldown active)
 ```
 
-You should now see:
+2. Nginx Access Logs
+Check structured JSON logs:
 
 ```bash
-X-App-Pool: green
+docker compose exec nginx tail -f /var/log/nginx/access.log
 ```
 
-### 🔧 Step 5: Stop the Chaos (Return to Normal)
+Example log snippet:
 
-To stop Blue’s error mode:
+```json
+{
+  "time": "2025-10-30T09:22:43+00:00",
+  "pool": "blue",
+  "release": "1.0.0-blue",
+  "status": 502,
+  "upstream_status": 502,
+  "latency_ms": 45,
+  "request": "GET /api/status HTTP/1.1"
+}
+```
+
+## 💬 Slack Alerts Reference
+
+### 🔄 Slack Alert – Failover Event
+
+When traffic shifts between pools:
+
+Failover detected! Traffic switched from BLUE → GREEN
+
+📸 Screenshot Example:
+ADDIMAGE>>>>>>>>>>>>>
+
+### ⚠️ Slack Alert – High Error Rate
+
+Triggered when >2% of recent requests return 5xx:
+
+High upstream error rate detected: 5.00% over last 200 requests
+
+📸 Screenshot Example:
+ADDIMAGE>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+## 🧹 Maintenance Mode
+To silence alerts during planned updates or toggles:
 
 ```bash
-curl -X POST http://localhost:8081/chaos/stop
+# Disable watcher alerts
+echo "MAINTENANCE_MODE=true" >> .env
+docker compose restart alert_watcher
 ```
 
-Now Nginx can safely send traffic back to Blue again.
+To re-enable:
 
-### 🧪 Step 6: Run the Automated Test
-
-The ci/test_failover.sh script automatically:
-- Checks that Blue is serving traffic.
-- Triggers chaos mode on Blue.
-- Sends 50 requests to Nginx.
-- Verifies that at least 95% of them are served by Green.
-
-Run the test:
-
-``` bash 
-./ci/test_failover.sh
+```bash
+sed -i 's/MAINTENANCE_MODE=true/MAINTENANCE_MODE=false/' .env
+docker compose restart alert_watcher
 ```
 
-## ✅ Expected Output:
+## 📂 Project Structure (Additions to HNG Stage 2 Project)
 
-PASS: Failover successful. 100% of requests served by Green with 0 non-200s.
+The following files and configurations were added to extend the existing Blue/Green deployment project with monitoring, alerting, and observability features.
 
-## 🔁 Summary of Traffic Flow
-| Situation | Nginx Routes Traffic To | Why |
-|------------|--------------------------|-----|
-| **Normal** | Blue (8081) | Blue is healthy |
-| **Blue Fails** | Green (8082) | Nginx detects Blue’s errors |
-| **Blue Fixed** | Blue (8081) | You can switch back manually |
+```bash
+├── docker-compose.yml
+├── watcher.py
+├── requirements.txt
+├── .env
+├── .env.example
+├── runbook.md
+└── README.md
+```
 
-## 🧰 Commands Reference
-- Start all containers ---> docker-compose up -d
-- Stop all containers	---> docker-compose down
-- View logs ---> docker-compose logs -f
-- Test Nginx routing --->	curl -i http://localhost:8080/version
-- Trigger chaos --->	curl -X POST http://localhost:8081/chaos/start?mode=error
-- Stop chaos --->	curl -X POST http://localhost:8081/chaos/stop
-- Run automated test --->	./ci/test_failover.sh
+## ✅ Verification Checklist
 
-## 🧠 Concepts You’ve Practiced
-- Docker Image: A packaged version of your app with all dependencies
-- Docker Container: A running instance of your image
-- Reverse Proxy: Nginx forwards traffic to Blue or Green
-- Failover: Automatic switch to a healthy service when one fails
-- Zero Downtime: Users never see an outage, even during updates
-- Chaos Testing: Simulating failures to check system resilience
-
-## 💡 Key Takeaways
-Both Blue and Green apps run from the same code, but on different ports.
-
-Nginx intelligently decides which one should receive
+| Step                    | Expected Result                |
+| ----------------------- | ------------------------------ |
+| `docker compose up -d`  | All containers healthy         |
+| Stop Blue container     | Failover alert in Slack        |
+| Simulate 5xx errors     | High error-rate alert in Slack |
+| Enable maintenance mode | No new alerts                  |
+| Recover Blue            | Recovery noted in logs         |
