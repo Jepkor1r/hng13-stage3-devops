@@ -193,3 +193,32 @@ docker logs -f alert_watcher
 ```bash
 tail -f /var/log/nginx/access.log
 ```
+
+## 💬 Slack Alerts Reference
+
+### 🔄 Slack Alert – Failover Event
+
+When traffic shifts between pools:
+
+Failover detected! Traffic switched from BLUE → GREEN
+📸 Screenshot Example:
+
+![Slack Alert – Failover Event](./SlackAlert-FailoverEvent.png)
+
+### ⚠️ Slack Alert – High Error Rate
+
+Triggered when >2% of recent requests return 5xx:
+
+High upstream error rate detected: 5.00% over last 200 requests
+
+📸 Screenshot Example:
+
+![Slack Alert – High Error Rate](./SlackAlert–HighErrorRate.png)
+
+### 📦 Container Logs
+
+A snippet of the Nginx log line showing structured log fields (pool, release, upstream status, latency, etc.).
+
+📸 Screenshot Example:
+
+![Container Logs](./ContainerLogs.png)

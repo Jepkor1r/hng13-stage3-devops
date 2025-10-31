@@ -122,7 +122,8 @@ When traffic shifts between pools:
 Failover detected! Traffic switched from BLUE → GREEN
 
 📸 Screenshot Example:
-ADDIMAGE>>>>>>>>>>>>>
+
+![Slack Alert – Failover Event](./SlackAlert-FailoverEvent.png)
 
 ### ⚠️ Slack Alert – High Error Rate
 
@@ -131,7 +132,16 @@ Triggered when >2% of recent requests return 5xx:
 High upstream error rate detected: 5.00% over last 200 requests
 
 📸 Screenshot Example:
-ADDIMAGE>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+![Slack Alert – High Error Rate](./SlackAlert–HighErrorRate.png)
+
+### 📦 Container Logs
+
+A snippet of the Nginx log line showing structured log fields (pool, release, upstream status, latency, etc.).
+
+📸 Screenshot Example:
+
+![Container Logs](./ContainerLogs.png)
 
 ## 🧹 Maintenance Mode
 To silence alerts during planned updates or toggles:

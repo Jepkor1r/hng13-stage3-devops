@@ -1,0 +1,241 @@
+2025/10/31 07:43:18 [notice] 1#1: using the "epoll" event method
+2025/10/31 07:43:18 [notice] 1#1: nginx/1.29.2
+2025/10/31 07:43:18 [notice] 1#1: built by gcc 14.2.0 (Debian 14.2.0-19) 
+2025/10/31 07:43:18 [notice] 1#1: OS: Linux 6.14.0-32-generic
+2025/10/31 07:43:18 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2025/10/31 07:43:18 [notice] 1#1: start worker processes
+2025/10/31 07:43:18 [notice] 1#1: start worker process 7
+2025/10/31 07:52:02 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2025/10/31 07:52:02 [notice] 7#7: gracefully shutting down
+2025/10/31 07:52:02 [notice] 7#7: exiting
+2025/10/31 07:52:02 [notice] 7#7: exit
+2025/10/31 07:52:02 [notice] 1#1: signal 17 (SIGCHLD) received from 7
+2025/10/31 07:52:02 [notice] 1#1: worker process 7 exited with code 0
+2025/10/31 07:52:02 [notice] 1#1: exit
+2025/10/31 08:20:03 [notice] 1#1: using the "epoll" event method
+2025/10/31 08:20:03 [notice] 1#1: nginx/1.29.2
+2025/10/31 08:20:03 [notice] 1#1: built by gcc 14.2.0 (Debian 14.2.0-19) 
+2025/10/31 08:20:03 [notice] 1#1: OS: Linux 6.14.0-32-generic
+2025/10/31 08:20:03 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2025/10/31 08:20:03 [notice] 1#1: start worker processes
+2025/10/31 08:20:03 [notice] 1#1: start worker process 8
+2025/10/31 08:53:45 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2025/10/31 08:53:45 [notice] 8#8: gracefully shutting down
+2025/10/31 08:53:45 [notice] 8#8: exiting
+2025/10/31 08:53:45 [notice] 8#8: exit
+2025/10/31 08:53:45 [notice] 1#1: signal 17 (SIGCHLD) received from 8
+2025/10/31 08:53:45 [notice] 1#1: worker process 8 exited with code 0
+2025/10/31 08:53:45 [notice] 1#1: exit
+2025/10/31 08:55:42 [notice] 1#1: using the "epoll" event method
+2025/10/31 08:55:42 [notice] 1#1: nginx/1.29.2
+2025/10/31 08:55:42 [notice] 1#1: built by gcc 14.2.0 (Debian 14.2.0-19) 
+2025/10/31 08:55:42 [notice] 1#1: OS: Linux 6.14.0-32-generic
+2025/10/31 08:55:42 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2025/10/31 08:55:42 [notice] 1#1: start worker processes
+2025/10/31 08:55:42 [notice] 1#1: start worker process 8
+2025/10/31 08:56:28 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2025/10/31 08:56:28 [notice] 8#8: gracefully shutting down
+2025/10/31 08:56:28 [notice] 8#8: exiting
+2025/10/31 08:56:28 [notice] 8#8: exit
+2025/10/31 08:56:28 [notice] 1#1: signal 17 (SIGCHLD) received from 8
+2025/10/31 08:56:28 [notice] 1#1: worker process 8 exited with code 0
+2025/10/31 08:56:28 [notice] 1#1: exit
+2025/10/31 08:56:53 [notice] 1#1: using the "epoll" event method
+2025/10/31 08:56:53 [notice] 1#1: nginx/1.29.2
+2025/10/31 08:56:53 [notice] 1#1: built by gcc 14.2.0 (Debian 14.2.0-19) 
+2025/10/31 08:56:53 [notice] 1#1: OS: Linux 6.14.0-32-generic
+2025/10/31 08:56:53 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2025/10/31 08:56:53 [notice] 1#1: start worker processes
+2025/10/31 08:56:53 [notice] 1#1: start worker process 7
+2025/10/31 09:17:05 [warn] 7#7: *1 upstream server temporarily disabled while reading response header from upstream, client: 172.19.0.1, server: _, request: "GET /healthz HTTP/1.1", upstream: "http://172.19.0.2:3000/healthz", host: "localhost:8080"
+2025/10/31 09:17:05 [info] 7#7: *1 client 172.19.0.1 closed keepalive connection
+2025/10/31 09:17:05 [info] 7#7: *4 client 172.19.0.1 closed keepalive connection
+2025/10/31 09:17:05 [info] 7#7: *6 client 172.19.0.1 closed keepalive connection
+2025/10/31 09:17:05 [info] 7#7: *8 client 172.19.0.1 closed keepalive connection
+2025/10/31 09:17:05 [info] 7#7: *10 client 172.19.0.1 closed keepalive connection
+2025/10/31 09:17:05 [info] 7#7: *12 client 172.19.0.1 closed keepalive connection
+2025/10/31 09:17:05 [info] 7#7: *14 client 172.19.0.1 closed keepalive connection
+2025/10/31 09:17:05 [info] 7#7: *16 client 172.19.0.1 closed keepalive connection
+2025/10/31 09:17:05 [info] 7#7: *18 client 172.19.0.1 closed keepalive connection
+2025/10/31 09:17:05 [info] 7#7: *20 client 172.19.0.1 closed keepalive connection
+2025/10/31 09:17:05 [info] 7#7: *22 client 172.19.0.1 closed keepalive connection
+2025/10/31 09:17:05 [info] 7#7: *24 client 172.19.0.1 closed keepalive connection
+2025/10/31 09:17:05 [info] 7#7: *26 client 172.19.0.1 closed keepalive connection
+2025/10/31 09:17:05 [info] 7#7: *28 client 172.19.0.1 closed keepalive connection
+2025/10/31 09:17:05 [info] 7#7: *30 client 172.19.0.1 closed keepalive connection
+2025/10/31 09:17:05 [info] 7#7: *32 client 172.19.0.1 closed keepalive connection
+2025/10/31 09:17:05 [info] 7#7: *34 client 172.19.0.1 closed keepalive connection
+2025/10/31 09:17:05 [info] 7#7: *36 client 172.19.0.1 closed keepalive connection
+2025/10/31 09:17:05 [info] 7#7: *38 client 172.19.0.1 closed keepalive connection
+2025/10/31 09:17:05 [info] 7#7: *40 client 172.19.0.1 closed keepalive connection
+2025/10/31 09:19:20 [warn] 7#7: *42 upstream server temporarily disabled while reading response header from upstream, client: 172.19.0.1, server: _, request: "GET /chaos HTTP/1.1", upstream: "http://172.19.0.2:3000/chaos", host: "localhost:8080"
+2025/10/31 09:19:20 [info] 7#7: *42 client 172.19.0.1 closed keepalive connection
+2025/10/31 09:19:20 [info] 7#7: *45 client 172.19.0.1 closed keepalive connection
+2025/10/31 09:19:20 [info] 7#7: *47 client 172.19.0.1 closed keepalive connection
+2025/10/31 09:19:20 [info] 7#7: *49 client 172.19.0.1 closed keepalive connection
+2025/10/31 09:19:20 [info] 7#7: *51 client 172.19.0.1 closed keepalive connection
+2025/10/31 09:33:57 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2025/10/31 09:33:57 [notice] 7#7: gracefully shutting down
+2025/10/31 09:33:57 [notice] 7#7: exiting
+2025/10/31 09:33:57 [notice] 7#7: exit
+2025/10/31 09:33:57 [notice] 1#1: signal 17 (SIGCHLD) received from 7
+2025/10/31 09:33:57 [notice] 1#1: worker process 7 exited with code 0
+2025/10/31 09:33:57 [notice] 1#1: exit
+2025/10/31 09:34:37 [notice] 1#1: using the "epoll" event method
+2025/10/31 09:34:37 [notice] 1#1: nginx/1.29.2
+2025/10/31 09:34:37 [notice] 1#1: built by gcc 14.2.0 (Debian 14.2.0-19) 
+2025/10/31 09:34:37 [notice] 1#1: OS: Linux 6.14.0-32-generic
+2025/10/31 09:34:37 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2025/10/31 09:34:37 [notice] 1#1: start worker processes
+2025/10/31 09:34:37 [notice] 1#1: start worker process 8
+2025/10/31 09:44:31 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2025/10/31 09:44:31 [notice] 8#8: gracefully shutting down
+2025/10/31 09:44:31 [notice] 8#8: exiting
+2025/10/31 09:44:31 [notice] 8#8: exit
+2025/10/31 09:44:31 [notice] 1#1: signal 17 (SIGCHLD) received from 8
+2025/10/31 09:44:31 [notice] 1#1: worker process 8 exited with code 0
+2025/10/31 09:44:31 [notice] 1#1: exit
+2025/10/31 09:45:39 [notice] 1#1: using the "epoll" event method
+2025/10/31 09:45:39 [notice] 1#1: nginx/1.29.2
+2025/10/31 09:45:39 [notice] 1#1: built by gcc 14.2.0 (Debian 14.2.0-19) 
+2025/10/31 09:45:39 [notice] 1#1: OS: Linux 6.14.0-32-generic
+2025/10/31 09:45:39 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2025/10/31 09:45:39 [notice] 1#1: start worker processes
+2025/10/31 09:45:39 [notice] 1#1: start worker process 9
+2025/10/31 09:49:43 [warn] 9#9: *1 upstream server temporarily disabled while reading response header from upstream, client: 172.19.0.1, server: _, request: "GET /version HTTP/1.1", upstream: "http://172.19.0.4:3000/version", host: "localhost:8080"
+2025/10/31 09:49:43 [info] 9#9: *1 client 172.19.0.1 closed keepalive connection
+2025/10/31 09:54:37 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2025/10/31 09:54:37 [notice] 9#9: gracefully shutting down
+2025/10/31 09:54:37 [notice] 9#9: exiting
+2025/10/31 09:54:37 [notice] 9#9: exit
+2025/10/31 09:54:37 [notice] 1#1: signal 17 (SIGCHLD) received from 9
+2025/10/31 09:54:37 [notice] 1#1: worker process 9 exited with code 0
+2025/10/31 09:54:37 [notice] 1#1: exit
+2025/10/31 09:55:08 [notice] 1#1: using the "epoll" event method
+2025/10/31 09:55:08 [notice] 1#1: nginx/1.29.2
+2025/10/31 09:55:08 [notice] 1#1: built by gcc 14.2.0 (Debian 14.2.0-19) 
+2025/10/31 09:55:08 [notice] 1#1: OS: Linux 6.14.0-32-generic
+2025/10/31 09:55:08 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2025/10/31 09:55:08 [notice] 1#1: start worker processes
+2025/10/31 09:55:08 [notice] 1#1: start worker process 7
+2025/10/31 09:55:38 [warn] 7#7: *1 upstream server temporarily disabled while reading response header from upstream, client: 172.19.0.1, server: _, request: "GET /version HTTP/1.1", upstream: "http://172.19.0.2:3000/version", host: "localhost:8080"
+2025/10/31 09:55:38 [info] 7#7: *1 client 172.19.0.1 closed keepalive connection
+2025/10/31 09:56:58 [info] 7#7: *4 client 172.19.0.1 closed keepalive connection
+2025/10/31 09:58:43 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2025/10/31 09:58:43 [notice] 7#7: gracefully shutting down
+2025/10/31 09:58:43 [notice] 7#7: exiting
+2025/10/31 09:58:43 [notice] 7#7: exit
+2025/10/31 09:58:43 [notice] 1#1: signal 17 (SIGCHLD) received from 7
+2025/10/31 09:58:43 [notice] 1#1: worker process 7 exited with code 0
+2025/10/31 09:58:43 [notice] 1#1: exit
+2025/10/31 09:59:13 [notice] 1#1: using the "epoll" event method
+2025/10/31 09:59:13 [notice] 1#1: nginx/1.29.2
+2025/10/31 09:59:13 [notice] 1#1: built by gcc 14.2.0 (Debian 14.2.0-19) 
+2025/10/31 09:59:13 [notice] 1#1: OS: Linux 6.14.0-32-generic
+2025/10/31 09:59:13 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2025/10/31 09:59:13 [notice] 1#1: start worker processes
+2025/10/31 09:59:13 [notice] 1#1: start worker process 8
+2025/10/31 09:59:38 [info] 8#8: *1 client 172.19.0.1 closed keepalive connection
+2025/10/31 10:00:00 [warn] 8#8: *3 upstream server temporarily disabled while reading response header from upstream, client: 172.19.0.1, server: _, request: "GET /version HTTP/1.1", upstream: "http://172.19.0.3:3000/version", host: "localhost:8080"
+2025/10/31 10:00:00 [info] 8#8: *3 client 172.19.0.1 closed keepalive connection
+2025/10/31 10:06:10 [info] 8#8: *6 client 172.19.0.1 closed keepalive connection
+2025/10/31 10:07:32 [warn] 8#8: *8 upstream server temporarily disabled while reading response header from upstream, client: 172.19.0.1, server: _, request: "GET /version HTTP/1.1", upstream: "http://172.19.0.3:3000/version", host: "localhost:8080"
+2025/10/31 10:07:32 [info] 8#8: *8 client 172.19.0.1 closed keepalive connection
+2025/10/31 10:07:51 [warn] 8#8: *11 upstream server temporarily disabled while reading response header from upstream, client: 172.19.0.1, server: _, request: "GET /version HTTP/1.1", upstream: "http://172.19.0.3:3000/version", host: "localhost:8080"
+2025/10/31 10:07:51 [info] 8#8: *11 client 172.19.0.1 closed keepalive connection
+2025/10/31 10:08:42 [warn] 8#8: *14 upstream server temporarily disabled while reading response header from upstream, client: 172.19.0.1, server: _, request: "GET /version HTTP/1.1", upstream: "http://172.19.0.3:3000/version", host: "localhost:8080"
+2025/10/31 10:08:42 [info] 8#8: *14 client 172.19.0.1 closed keepalive connection
+2025/10/31 10:09:38 [info] 8#8: *17 client 172.19.0.1 closed keepalive connection
+2025/10/31 10:10:12 [warn] 8#8: *19 upstream server temporarily disabled while reading response header from upstream, client: 172.19.0.1, server: _, request: "GET /version HTTP/1.1", upstream: "http://172.19.0.3:3000/version", host: "localhost:8080"
+2025/10/31 10:10:12 [info] 8#8: *19 client 172.19.0.1 closed keepalive connection
+2025/10/31 10:11:13 [warn] 8#8: *22 upstream server temporarily disabled while reading response header from upstream, client: 172.19.0.1, server: _, request: "GET /version HTTP/1.1", upstream: "http://172.19.0.3:3000/version", host: "localhost:8080"
+2025/10/31 10:11:13 [info] 8#8: *22 client 172.19.0.1 closed keepalive connection
+2025/10/31 10:11:49 [info] 8#8: *25 client 172.19.0.1 closed keepalive connection
+2025/10/31 10:12:45 [info] 8#8: *27 client 172.19.0.1 closed keepalive connection
+2025/10/31 10:34:38 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2025/10/31 10:34:38 [notice] 8#8: gracefully shutting down
+2025/10/31 10:34:38 [notice] 8#8: exiting
+2025/10/31 10:34:38 [notice] 8#8: exit
+2025/10/31 10:34:38 [notice] 1#1: signal 17 (SIGCHLD) received from 8
+2025/10/31 10:34:38 [notice] 1#1: worker process 8 exited with code 0
+2025/10/31 10:34:38 [notice] 1#1: exit
+2025/10/31 10:35:08 [notice] 1#1: using the "epoll" event method
+2025/10/31 10:35:08 [notice] 1#1: nginx/1.29.2
+2025/10/31 10:35:08 [notice] 1#1: built by gcc 14.2.0 (Debian 14.2.0-19) 
+2025/10/31 10:35:08 [notice] 1#1: OS: Linux 6.14.0-32-generic
+2025/10/31 10:35:08 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2025/10/31 10:35:08 [notice] 1#1: start worker processes
+2025/10/31 10:35:08 [notice] 1#1: start worker process 8
+2025/10/31 10:35:28 [info] 8#8: *1 client 172.19.0.1 closed keepalive connection
+2025/10/31 10:36:43 [warn] 8#8: *3 upstream server temporarily disabled while reading response header from upstream, client: 172.19.0.1, server: _, request: "GET /version HTTP/1.1", upstream: "http://172.19.0.2:3000/version", host: "localhost:8080"
+2025/10/31 10:36:43 [info] 8#8: *3 client 172.19.0.1 closed keepalive connection
+2025/10/31 10:42:21 [warn] 8#8: *6 upstream server temporarily disabled while reading response header from upstream, client: 172.19.0.1, server: _, request: "GET /version HTTP/1.1", upstream: "http://172.19.0.2:3000/version", host: "localhost:8080"
+2025/10/31 10:42:21 [info] 8#8: *6 client 172.19.0.1 closed keepalive connection
+2025/10/31 10:43:12 [info] 8#8: *9 client 172.19.0.1 closed keepalive connection
+2025/10/31 10:43:29 [info] 8#8: *11 client 172.19.0.1 closed keepalive connection
+2025/10/31 10:43:54 [info] 8#8: *13 client 172.19.0.1 closed keepalive connection
+2025/10/31 10:44:08 [info] 8#8: *15 client 172.19.0.1 closed keepalive connection
+2025/10/31 10:57:36 [info] 8#8: *17 client 172.19.0.1 closed keepalive connection
+2025/10/31 10:58:02 [info] 8#8: *19 client 172.19.0.1 closed keepalive connection
+2025/10/31 10:58:08 [info] 8#8: *21 client 172.19.0.1 closed keepalive connection
+2025/10/31 10:58:47 [info] 8#8: *23 client 172.19.0.1 closed keepalive connection
+2025/10/31 10:58:53 [info] 8#8: *25 client 172.19.0.1 closed keepalive connection
+2025/10/31 10:59:20 [warn] 8#8: *27 upstream server temporarily disabled while reading response header from upstream, client: 172.19.0.1, server: _, request: "GET /version HTTP/1.1", upstream: "http://172.19.0.2:3000/version", host: "localhost:8080"
+2025/10/31 10:59:20 [info] 8#8: *27 client 172.19.0.1 closed keepalive connection
+2025/10/31 10:59:48 [warn] 8#8: *30 upstream server temporarily disabled while reading response header from upstream, client: 172.19.0.1, server: _, request: "GET /version HTTP/1.1", upstream: "http://172.19.0.2:3000/version", host: "localhost:8080"
+2025/10/31 10:59:48 [info] 8#8: *30 client 172.19.0.1 closed keepalive connection
+2025/10/31 11:06:19 [warn] 8#8: *33 upstream server temporarily disabled while reading response header from upstream, client: 172.19.0.1, server: _, request: "GET /version HTTP/1.1", upstream: "http://172.19.0.2:3000/version", host: "localhost:8080"
+2025/10/31 11:06:19 [info] 8#8: *33 client 172.19.0.1 closed keepalive connection
+2025/10/31 11:07:11 [warn] 8#8: *36 upstream server temporarily disabled while reading response header from upstream, client: 172.19.0.1, server: _, request: "GET /version HTTP/1.1", upstream: "http://172.19.0.2:3000/version", host: "localhost:8080"
+2025/10/31 11:07:11 [info] 8#8: *36 client 172.19.0.1 closed keepalive connection
+2025/10/31 11:07:39 [info] 8#8: *39 client 172.19.0.1 closed keepalive connection
+2025/10/31 11:07:44 [info] 8#8: *41 client 172.19.0.1 closed keepalive connection
+2025/10/31 11:17:48 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2025/10/31 11:17:48 [notice] 8#8: gracefully shutting down
+2025/10/31 11:17:48 [notice] 8#8: exiting
+2025/10/31 11:17:48 [notice] 8#8: exit
+2025/10/31 11:17:48 [notice] 1#1: signal 17 (SIGCHLD) received from 8
+2025/10/31 11:17:48 [notice] 1#1: worker process 8 exited with code 0
+2025/10/31 11:17:48 [notice] 1#1: exit
+2025/10/31 11:18:26 [notice] 1#1: using the "epoll" event method
+2025/10/31 11:18:26 [notice] 1#1: nginx/1.29.2
+2025/10/31 11:18:26 [notice] 1#1: built by gcc 14.2.0 (Debian 14.2.0-19) 
+2025/10/31 11:18:26 [notice] 1#1: OS: Linux 6.14.0-32-generic
+2025/10/31 11:18:26 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2025/10/31 11:18:26 [notice] 1#1: start worker processes
+2025/10/31 11:18:26 [notice] 1#1: start worker process 9
+2025/10/31 11:19:46 [info] 9#9: *1 client 172.19.0.1 closed keepalive connection
+2025/10/31 11:20:02 [warn] 9#9: *3 upstream server temporarily disabled while reading response header from upstream, client: 172.19.0.1, server: _, request: "GET /version HTTP/1.1", upstream: "http://172.19.0.2:3000/version", host: "localhost:8080"
+2025/10/31 11:20:02 [info] 9#9: *3 client 172.19.0.1 closed keepalive connection
+2025/10/31 11:20:47 [warn] 9#9: *6 upstream server temporarily disabled while reading response header from upstream, client: 172.19.0.1, server: _, request: "GET /version HTTP/1.1", upstream: "http://172.19.0.2:3000/version", host: "localhost:8080"
+2025/10/31 11:20:47 [info] 9#9: *6 client 172.19.0.1 closed keepalive connection
+2025/10/31 11:22:35 [info] 9#9: *9 client 172.19.0.1 closed keepalive connection
+2025/10/31 11:22:57 [info] 9#9: *11 client 172.19.0.1 closed keepalive connection
+2025/10/31 11:23:22 [info] 9#9: *13 client 172.19.0.1 closed keepalive connection
+2025/10/31 11:23:54 [info] 9#9: *15 client 172.19.0.1 closed keepalive connection
+2025/10/31 11:24:46 [info] 9#9: *17 client 172.19.0.1 closed keepalive connection
+2025/10/31 11:24:50 [info] 9#9: *19 client 172.19.0.1 closed keepalive connection
+2025/10/31 11:25:38 [info] 9#9: *21 client 172.19.0.1 closed keepalive connection
+2025/10/31 12:08:55 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2025/10/31 12:08:55 [notice] 9#9: gracefully shutting down
+2025/10/31 12:08:55 [notice] 9#9: exiting
+2025/10/31 12:08:55 [notice] 9#9: exit
+2025/10/31 12:08:55 [notice] 1#1: signal 17 (SIGCHLD) received from 9
+2025/10/31 12:08:55 [notice] 1#1: worker process 9 exited with code 0
+2025/10/31 12:08:55 [notice] 1#1: exit
+2025/10/31 12:09:36 [notice] 1#1: using the "epoll" event method
+2025/10/31 12:09:36 [notice] 1#1: nginx/1.29.2
+2025/10/31 12:09:36 [notice] 1#1: built by gcc 14.2.0 (Debian 14.2.0-19) 
+2025/10/31 12:09:36 [notice] 1#1: OS: Linux 6.14.0-32-generic
+2025/10/31 12:09:36 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2025/10/31 12:09:36 [notice] 1#1: start worker processes
+2025/10/31 12:09:36 [notice] 1#1: start worker process 8
+2025/10/31 12:11:02 [info] 8#8: *1 client 172.19.0.1 closed keepalive connection
+2025/10/31 12:11:39 [warn] 8#8: *3 upstream server temporarily disabled while reading response header from upstream, client: 172.19.0.1, server: _, request: "GET /version HTTP/1.1", upstream: "http://172.19.0.3:3000/version", host: "localhost:8080"
+2025/10/31 12:11:39 [info] 8#8: *3 client 172.19.0.1 closed keepalive connection
+2025/10/31 12:12:29 [warn] 8#8: *6 upstream server temporarily disabled while reading response header from upstream, client: 172.19.0.1, server: _, request: "GET /version HTTP/1.1", upstream: "http://172.19.0.3:3000/version", host: "localhost:8080"
+2025/10/31 12:12:29 [info] 8#8: *6 client 172.19.0.1 closed keepalive connection
+2025/10/31 12:13:05 [warn] 8#8: *9 upstream server temporarily disabled while reading response header from upstream, client: 172.19.0.1, server: _, request: "GET /version HTTP/1.1", upstream: "http://172.19.0.3:3000/version", host: "localhost:8080"
+2025/10/31 12:13:05 [info] 8#8: *9 client 172.19.0.1 closed keepalive connection
+2025/10/31 12:14:14 [info] 8#8: *12 client 172.19.0.1 closed keepalive connection
+2025/10/31 12:14:26 [info] 8#8: *14 client 172.19.0.1 closed keepalive connection
