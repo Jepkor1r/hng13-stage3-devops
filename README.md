@@ -123,7 +123,7 @@ Failover detected! Traffic switched from BLUE → GREEN
 
 📸 Screenshot Example:
 
-![Slack Alert – Failover Event](./SlackAlert-FailoverEvent.png)
+![Slack Alert – Failover Event](./SlackAlert–FailoverEvent.png)
 
 ### ⚠️ Slack Alert – High Error Rate
 
